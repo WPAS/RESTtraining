@@ -83,8 +83,11 @@ document.addEventListener("DOMContentLoaded", function(){
     function saveBook(e) {
         e.preventDefault();
         
-        var title = document.querySelector('input[name="title"]').value;
-        var author = document.querySelector('input[name="author"]').value;
+        var titleInput = document.querySelector('input[name="title"]'); 
+        var authorInput = document.querySelector('input[name="author"]');
+        
+        var title = titleInput.value;
+        var author = authorInput.value;
         
         axios.post('api/books.php', {
             title: title,
@@ -92,6 +95,8 @@ document.addEventListener("DOMContentLoaded", function(){
         })
         .then(function (response) {
             alert("Book was saved");
+            titleInput.value = "";
+            authorInput.value = "";
             location.reload()           
         })
         .catch(function (error) {
