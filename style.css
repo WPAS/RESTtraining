@@ -8,6 +8,7 @@ section {
 div {
     background-color: slategray;
     padding: 5px;
+    margin-bottom: 5px;
 }
 
 .hidden {

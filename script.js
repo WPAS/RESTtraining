@@ -6,10 +6,17 @@ document.addEventListener("DOMContentLoaded", function(){
         titleEl.appendChild(title);
         titleEl.dataset.id = book.id;
         parent.appendChild(titleEl);
-
+     
         var div = document.createElement("div");
         div.classList.add("hidden");
         parent.appendChild(div);
+        
+        var deleter = document.createElement("a");
+        var text = document.createTextNode("Usuń książkę");
+        deleter.appendChild(text);
+        deleter.setAttribute("href", "api/books.php?id="+book.id);
+        parent.appendChild(deleter);
+
     }
 
     function showDetails() {               
@@ -30,6 +37,22 @@ document.addEventListener("DOMContentLoaded", function(){
             divEl.classList.add("hidden");                    
         }                
     }
+    
+    function deleteBook(e) {
+        e.preventDefault();
+        
+        alert("Are you sure, that you want to delete that book. We will not be able to restore this data")
+        var url = this.getAttribute("href");
+        
+        axios.delete(url)
+        .then(function (response) {
+            alert("Book was deleted");
+            location.reload()           
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
 
     function fetchAndPrintData() {
         axios.get('api/books.php').then(function (response) {
@@ -44,6 +67,12 @@ document.addEventListener("DOMContentLoaded", function(){
         for(var i = 0; i < titles.length; i++) {
             titles[i].addEventListener('click', showDetails);
         }
+        
+        var deleters = document.querySelectorAll("section a");
+        for(var i = 0; i < deleters.length; i++) {
+            deleters[i].addEventListener('click', deleteBook);
+        }
+
 
         })
         .catch(function (error) {
@@ -62,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function(){
             author: author
         })
         .then(function (response) {
+            alert("Book was saved");
             location.reload()           
         })
         .catch(function (error) {

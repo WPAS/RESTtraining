@@ -2,6 +2,8 @@
 require_once 'src/connection.php';
 require_once 'src/Book.php';
 
+$conn->query("SET CHARACTER SET utf8");
+
 if($_SERVER["REQUEST_METHOD"] === "GET") {
     if(isset($_GET['id'])) {
         
@@ -11,8 +13,6 @@ if($_SERVER["REQUEST_METHOD"] === "GET") {
         echo $bookJSON;
         
     } else {
-        $conn->query("SET CHARACTER SET utf8");
-
         $sql = "SELECT `id` FROM `book`";
         $result = $conn->query($sql);
 
@@ -44,4 +44,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
        
         Book::create($conn, $title, $author);
     }    
+}
+
+if($_SERVER["REQUEST_METHOD"] === "DELETE") {
+    if(isset($_GET['id'])) {
+        $id = $_GET['id'];
+        Book::delete($conn, $id);
+    }
 }
