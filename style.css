@@ -1,0 +1,19 @@
+section {
+    border: 1px solid darkgray;
+    background-color: lightgray;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+div {
+    background-color: slategray;
+    padding: 5px;
+}
+
+.hidden {
+    display: none;                
+}
+
+form {
+    padding-bottom: 20px;
+}
