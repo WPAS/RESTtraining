@@ -2,9 +2,9 @@
 
 class Book
 {
-    private $id;
-    private $author;
-    private $title;
+    public $id;
+    public $author;
+    public $title;
     
     function __construct() {
         $this->id = -1;
