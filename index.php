@@ -9,7 +9,7 @@
     </head>
     <body>
         <form id="addBook" method="POST" action="index.php">    
-            <h1>Add new book</h1>
+            <h1>Add a new book</h1>
             <label>Title:
                 <input type="text" name="title" placeholder="Write a title">
             </label>

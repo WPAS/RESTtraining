@@ -1,10 +1,10 @@
 <?php
 
-class Book
+class Book implements JsonSerializable
 {
-    public $id;
-    public $author;
-    public $title;
+    private $id;
+    private $author;
+    private $title;
     
     function __construct() {
         $this->id = -1;
@@ -104,6 +104,11 @@ class Book
         } else {
             die("Error, Book was not deleted: " . $conn->errno);
         }
+    }
+    
+    public function jsonSerialize() {
+        $vars = get_object_vars($this);
+        return $vars;
     }
 }
 

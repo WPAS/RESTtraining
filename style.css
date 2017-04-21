@@ -5,10 +5,18 @@ section {
     padding: 10px;
 }
 
-div {
+section h3 {
+    cursor: pointer;
+}
+
+section a {
+    color: red;
+}
+
+section div {
     background-color: slategray;
     padding: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .hidden {

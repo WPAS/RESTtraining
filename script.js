@@ -41,17 +41,21 @@ document.addEventListener("DOMContentLoaded", function(){
     function deleteBook(e) {
         e.preventDefault();
         
-        alert("Are you sure, that you want to delete that book. We will not be able to restore this data")
-        var url = this.getAttribute("href");
+        var answer = prompt("Are you sure, that you want to delete the book. We will not be able to restore the data. \n\
+Write YES and click OK, if you want to delete the book. Click Cancel if you want to go back").toLowerCase();
         
-        axios.delete(url)
-        .then(function (response) {
-            alert("Book was deleted");
-            location.reload()           
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+        if(answer === "yes") {
+            var url = this.getAttribute("href");
+
+            axios.delete(url)
+            .then(function (response) {
+                alert("Book was deleted");
+                location.reload()           
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
     }
 
     function fetchAndPrintData() {
