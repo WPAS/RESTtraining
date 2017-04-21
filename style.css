@@ -3,6 +3,7 @@ section {
     background-color: lightgray;
     margin-bottom: 5px;
     padding: 10px;
+    padding-bottom: 20px;
 }
 
 section h3 {
@@ -10,13 +11,19 @@ section h3 {
 }
 
 section a {
-    color: red;
+    background-color: red;
+    border: 1px solid darkred;
+    border-radius: 15px;
+    box-shadow: 2px 2px darkgray;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
 }
 
 section div {
     background-color: slategray;
     padding: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .hidden {

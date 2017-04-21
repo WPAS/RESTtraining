@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] === "GET") {
         echo $bookJSON;
         
     } else {
-        $sql = "SELECT `id` FROM `book`";
+        $sql = "SELECT `id` FROM `book` ORDER BY `id` DESC";
         $result = $conn->query($sql);
 
         if (!$result) {
