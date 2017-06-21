@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
         parent.appendChild(div);
         
         var deleter = document.createElement("a");
-        var text = document.createTextNode("Usuń książkę");
+        var text = document.createTextNode("Delete");
         deleter.appendChild(text);
         deleter.setAttribute("href", "api/books.php?id="+book.id);
         parent.appendChild(deleter);
@@ -50,7 +50,7 @@ Write YES and click OK, if you want to delete the book. Click Cancel if you want
             axios.delete(url)
             .then(function (response) {
                 alert("Book was deleted");
-                location.reload()           
+                location.reload();           
             })
             .catch(function (error) {
                 console.log(error);
@@ -59,28 +59,27 @@ Write YES and click OK, if you want to delete the book. Click Cancel if you want
     }
 
     function fetchAndPrintData() {
-        axios.get('api/books.php').then(function (response) {
-        for (var i = 0; i < response.data.length; i++) {     
-            var section = document.createElement("section");
-            document.body.appendChild(section);
+        axios.get('api/books.php')
+        .then(function (response) {
+            for (var i = 0; i < response.data.length; i++) {     
+                var section = document.createElement("section");
+                document.body.appendChild(section);
 
-            showTitle(section, response.data[i]);               
-        }
+                showTitle(section, response.data[i]);               
+            }
 
-        var titles = document.getElementsByTagName("h3");
-        for(var i = 0; i < titles.length; i++) {
-            titles[i].addEventListener('click', showDetails);
-        }
+            var titles = document.getElementsByTagName("h3");
+            for(var i = 0; i < titles.length; i++) {
+                titles[i].addEventListener('click', showDetails);
+            }
         
-        var deleters = document.querySelectorAll("section a");
-        for(var i = 0; i < deleters.length; i++) {
-            deleters[i].addEventListener('click', deleteBook);
-        }
-
-
+            var deleters = document.querySelectorAll("section a");
+            for(var i = 0; i < deleters.length; i++) {
+                deleters[i].addEventListener('click', deleteBook);
+            }
         })
         .catch(function (error) {
-          console.log(error);
+            console.log(error);
         });         
     } 
     

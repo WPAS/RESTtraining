@@ -14,7 +14,7 @@ section a {
     background-color: red;
     border: 1px solid darkred;
     border-radius: 15px;
-    box-shadow: 2px 2px darkgray;
+    box-shadow: 2px 2px 2px #2a3133;
     color: white;
     padding: 5px 10px;
     text-decoration: none;
